@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 99vw;
+  height: 99vh;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 15%;
+  box-shadow: 3px 6px 23px -3px rgba(0, 0, 0, 0.316);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #e8e8e8;
+}
+
+main {
+  width: 90%;
+  max-height: auto;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filtre {
+  width: 90%;
+  height: 20%;
+  background-color: red;
+}
+
+.container-film {
+  width: 100%;
+  height: auto;
+  display: flex;
+  gap: 0.4em;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  height: 15em;
+  width: 12em;
+  margin: 1em;
+  border-radius: 1em;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.card .front-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card .front-content p {
+  font-weight: 700;
+  opacity: 1;
+  background: linear-gradient(-45deg, #000 0%, #000 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card .content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  background: linear-gradient(-45deg, #f89b29 0%, #ff0f7b 100%);
+  color: #e8e8e8;
+  border-radius: 5px;
+  pointer-events: none;
+  transform: translatex(96%);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  overflow-y: scroll;
+}
+
+.card .content .heading {
+  font-weight: 100;
+}
+
+.card .content .heading p strong {
+  text-decoration: underline;
+}
+
+.card:hover .content {
+  transform: translateY(0);
+}
+
+.card:hover .front-content {
+  transform: translateX(20%);
+}
+
+.card:hover .front-content p {
+  opacity: 0;
+}
+
+.description {
+  -webkit-text-decoration: double;
+          text-decoration: double;
+}
+
+.image-clignote {
+  animation-duration: 0.8s;
+  animation-name: clignoter;
+  animation-iteration-count: infinite;
+  transition: none;
+}
+
+@keyframes clignoter {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=style.css.map */
