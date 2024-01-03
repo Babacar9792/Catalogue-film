@@ -7,6 +7,7 @@ let tabMovies = [];
 export function handleScroll(url,containerCard, currentPage) {
     const scrollThreshold = 300; // Seuil de déclenchement du chargement supplémentaire
     if (containerCard.scrollHeight - containerCard.scrollTop - containerCard.clientHeight < scrollThreshold) {
+        // if (window.screenY + window.innerHeight >= document.documentElement.scrollHeight ) {
         currentPage++;
         getFilmByUrl(url,currentPage)
             .then(movies => displayMovies(movies, containerCard));
@@ -19,15 +20,10 @@ export async function getFilmByUrl(url, page) {
         const urlObject = new URL(url);
 
         urlObject.searchParams.set('page', page);
-
-        // const response = await fetch(urlObject.toString(), {
-        //     method: "GET",
-        // });
-        // const data = await response.json();
        return fetch(urlObject.toString())
             .then(response => response.json())
             .then(data =>  {
-                loader(false);
+                // loader(false);
                 return   data['results'];
             });
         ;
@@ -39,15 +35,15 @@ export async function getFilmByUrl(url, page) {
 }
 
 export function displayMovies(movies , containerCard) {
-    console.log(movies);  
-    tabMovies = tabMovies.concat(movies)
-    createCatalogueFilm(tabMovies, containerCard)
+    // console.log(movies);  
+    // tabMovies = tabMovies.concat(movies)
+    // tabMovies = [...tabMovies, ...movies];
+    createCatalogueFilm(movies, containerCard)
 }
 
  
 
 function createCatalogueFilm(tabFilm, containerCard) {
-    containerCard.innerHTML = "";
     for (const element of tabFilm) {
         createCardFilm(containerCard, element);
     };
