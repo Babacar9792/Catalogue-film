@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-   width: 99vw;
+   width: 98vw;
    height: 99vh;
 }
 .container{
@@ -18,13 +18,63 @@ body{
 
 header{
     width: 100%;
-    height: 15%;
+    height: 12%;
     box-shadow: 3px 6px 23px -3px rgba(0, 0, 0, 0.316);
     position: sticky;
     top: 0;
+    bottom: 0;;
     z-index: 1;
     background-color: #e8e8e8;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
+
+header div{
+  width: 30%;
+  height: 90%;
+  // border: 0.1rem solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header div a{
+  width: 10%;
+  height: 50%;
+  border: 0.1em solid;
+  border-radius: 50%;
+  cursor: pointer;
+}
+header div a img{
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.box {
+  width: 90%;
+  height: 50%;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  }
+  
+  .box>i {
+  font-size: 20px;
+  color: #777;
+  }
+  
+  .box>input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding-left: 10px;
+  }
 main{
     width: 90%;
     max-height: auto;
@@ -32,8 +82,8 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
+
 .filtre{
     width: 90%;
     height: 20%;
@@ -48,8 +98,8 @@ main{
 }
 
 .card-container {
-    height: 15em;
-    width: 12em;
+    height: 25em;
+    width: 15em;
     margin: 1em;
     border-radius: 1em;
     position: relative;
@@ -61,6 +111,7 @@ main{
     width: 100%;
     height: 100%;
     border-radius: inherit;
+    box-shadow: 2px -2px 14px -1px rgba(0,0,0,0.75);
   }
   
   .card .front-content {
@@ -72,9 +123,11 @@ main{
     flex-direction: column;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     background-size: cover;
-    background-repeat: no-repeat;
+    // background-repeat: repeat;
     
   }
+
+  
   
   .card .front-content p {
     font-weight: 700;
@@ -102,9 +155,10 @@ main{
     color: #e8e8e8;
     border-radius: 5px;
     pointer-events: none;
-    transform: translatex(96%);
+    transform: translateY(100%);
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-    overflow-y: scroll;
+    // overflow-y: scroll;
+    cursor: pointer;
   }
   
   .card .content .heading {
@@ -140,6 +194,42 @@ main{
    40%   {opacity:0; }
    100% { opacity:1; }
  }
+
+
+ /* Skeleton*/
+
+.skeleton-s1itewhz27i {
+  position: relative;
+  height: 100%; 
+  z-index: 1000;  
+  background-color: #ffffff;
+  border-radius: 0px 0px 0px 0px;
+  background-image: linear-gradient( #F5F7F9 6px, transparent 0 ),linear-gradient( #F5F7F9 6px, transparent 0 ),linear-gradient( #F5F7F9 6px, transparent 0 ),linear-gradient( #F5F7F9 6px, transparent 0 ),linear-gradient( #F5F7F9 6px, transparent 0 ),radial-gradient( circle 20px at 20px 20px, #F5F7F9 99%, transparent 0 );
+  background-repeat: repeat-y;
+  background-size: 43% 133px,90% 133px,74% 133px,52px 133px,88px 133px,40px 133px;
+  background-position: left 12px top 111px,left 12px top 92px,left 12px top 73px,left 59px top 39px,left 59px top 21px,left 12px top 12px;
+}
+.skeleton-s1itewhz27i:before {
+  content: ' '; 
+  position: absolute; 
+  z-index: 1000; 
+  width: 100%; 
+  height: 100%;
+  -webkit-mask-image: linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% ); 
+  -webkit-mask-repeat : repeat-y; 
+  -webkit-mask-size : 50px 400px;
+  -webkit-mask-position: -20% 0;
+  background-image: linear-gradient( rgba(102,102,102,1) 6px, transparent 0 ),linear-gradient( rgba(102,102,102,1) 6px, transparent 0 ),linear-gradient( rgba(102,102,102,1) 6px, transparent 0 ),linear-gradient( rgba(102,102,102,1) 6px, transparent 0 ),linear-gradient( rgba(102,102,102,1) 6px, transparent 0 ),radial-gradient( circle 20px at 20px 20px, rgba(102,102,102,1) 99%, transparent 0 );
+  background-repeat: repeat-y;
+  background-size: 43% 133px,90% 133px,74% 133px,52px 133px,88px 133px,40px 133px;
+  background-position: left 12px top 111px,left 12px top 92px,left 12px top 73px,left 59px top 39px,left 59px top 21px,left 12px top 12px;
+  animation: shineForSkeleton-s1itewhz27i 2s infinite;
+}
+@keyframes shineForSkeleton-s1itewhz27i {
+  to {
+    -webkit-mask-position: 120% 0
+  }
+}
   
   
 

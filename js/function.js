@@ -1,4 +1,5 @@
-import { IMGPATH } from "./constante.js";
+import { IMGPATH, SEARCHAPI } from "./constante.js";
+import { containerFilm, skeleton } from "./dom.js";
 
 let tabMovies = [];
 
@@ -14,20 +15,31 @@ export function handleScroll(url,containerCard, currentPage) {
 
 export async function getFilmByUrl(url, page) {
     try {
+       
         const urlObject = new URL(url);
+
         urlObject.searchParams.set('page', page);
 
-        const response = await fetch(urlObject.toString(), {
-            method: "GET",
-        });
-        const data = await response.json();
-        return data['results'];
+        // const response = await fetch(urlObject.toString(), {
+        //     method: "GET",
+        // });
+        // const data = await response.json();
+       return fetch(urlObject.toString())
+            .then(response => response.json())
+            .then(data =>  {
+                loader(false);
+                return   data['results'];
+            });
+        ;
+       
+
     } catch (err) {
         console.log(err);
     }
 }
 
-export function displayMovies(movies , containerCard) {  
+export function displayMovies(movies , containerCard) {
+    console.log(movies);  
     tabMovies = tabMovies.concat(movies)
     createCatalogueFilm(tabMovies, containerCard)
 }
@@ -43,22 +55,19 @@ function createCatalogueFilm(tabFilm, containerCard) {
 }
 
 function createCardFilm(containerCard, film) {
-    containerCard.innerHTML += ` <div class="card-container"  >
+    
+    containerCard.innerHTML +=  ` <div class="card-container"  >
      <div class="card">
-            <div class="front-content" id="film_${film['id']}">
-                <marquee behavior="" direction="">
-                    <h3>${film['original_title']}</h3>
-
-                </marquee>
-                <p class="image-clignote" >Sortie : ${film['release_date']}</p>
+            <div class="front-content" id="film_${film['id']}" style="background: url(${IMGPATH+film.backdrop_path}) no-repeat center; background-size: cover;" >
+                
             </div>
             <div class="content">
                 <h5 class="description" >Title : ${film['original_title']}</h5>
-                <p class="heading"> <strong class="description">Description :</strong> ${film['overview']}</p>
+                <p class="heading"> <strong class="description">Description :</strong> ${film['overview'].substring(1,500)}</p>
             </div>
         </div>
    </div>`;
-   setBackgroundImage(film['id'], film['backdrop_path']);
+//    setBackgroundImage(film['id'], film['backdrop_path']);
   }
 
 
@@ -66,7 +75,23 @@ function createCardFilm(containerCard, film) {
   function setBackgroundImage(id, backdrop_path) {
     const filmDiv = document.querySelector('#film_'+id);
     filmDiv.style.backgroundImage = `url('${IMGPATH+backdrop_path}')`;
+    filmDiv.style.backgroundSize = "cover";
     
+  }
+
+  export function loader(isSkeleton){
+    skeleton.style.transform = isSkeleton ? "scale(1)" : "scale(0)";
+    containerFilm.style.transform= !isSkeleton ? "scale(1)" : "scale(0)";
+  }
+
+  export function searchFilm(libelleFilm){
+    fetch(SEARCHAPI+libelleFilm)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            createCatalogueFilm(data['results'], containerFilm)
+        })
+
   }
 
 
